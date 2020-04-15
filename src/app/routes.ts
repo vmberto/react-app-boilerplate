@@ -4,24 +4,24 @@ const Product = lazy(() => import('app/ui/pages/product/Product'));
 const About = lazy(() => import('app/ui/pages/about/About'));
 const NotFound = lazy(() => import('app/ui/pages/not-found/NotFound'));
 
-interface Route { exact: boolean, path: string, component: FunctionComponent<any> | ComponentClass<any, any> }; 
+interface Route { exact: boolean, path: string, component: FunctionComponent<any> | ComponentClass<any, any> }
 
 const routes: Route[] = [
     {
         exact: true,
         path: '/',
-        component: About
+        component: About,
     },
     {
-        exact: false,
+        exact: true,
         path: '/product/:id',
-        component: Product
+        component: Product,
     },
     {
-        exact: false,
+        exact: true,
         path: '*',
-        component: NotFound
-    }
+        component: NotFound,
+    },
 ];
 
 export default routes;

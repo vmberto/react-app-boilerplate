@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router-dom';
 import { DefaultButton, RoundedButton } from 'app/ui/common/Button';
 import { Input } from 'app/ui/common/Input';
 
 type TParams = { id: string };
-const Product: FC<RouteComponentProps<TParams>> = function(props) {
-  return (
+const Product: FC<RouteComponentProps<TParams>> = ({ match }) => (
     <div>
-      <h2>This is a page for product with ID: {props.match.params.id} </h2>
+      <h2>
+        This is a page for product with ID:
+        {match.params.id}
+      </h2>
       <div>
       <DefaultButton style={{ margin: '1em' }}>
         Ativos
@@ -29,10 +31,9 @@ const Product: FC<RouteComponentProps<TParams>> = function(props) {
       </RoundedButton>
       </div>
       <div>
-        <Input style={{ margin: '1em' }} placeholder="Pesquisar..."/>
+        <Input style={{ margin: '1em' }} placeholder="Pesquisar..." />
       </div>
     </div>
   );
-}
 
 export default Product;

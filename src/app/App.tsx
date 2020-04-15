@@ -1,19 +1,25 @@
-import React, { Suspense } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import GlobalStyle from "./ui/common/GlobalStyle";
-import Login from "app/ui/auth/Login";
-import Home from "app/ui/home/Home";
-import PrivateRoute from "app/ui/auth/PrivateRoute";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+// redux
+import { Provider } from 'react-redux';
+import store from 'app/redux';
+// ui
+import Login from 'app/ui/auth/Login';
+import Home from 'app/ui/home/Home';
+// styles
+import GlobalStyle from 'app/ui/common/GlobalStyle';
 
 function App() {
   return (
-    <Router>
+    <Provider store={store}>
       <GlobalStyle />
-      <Suspense fallback="Loading..">
-        <Route component={Login} exact={true} path={'/login'} />
-        <PrivateRoute component={Home} auth={false} />
-      </Suspense>
-    </Router>
+      <BrowserRouter>
+          <Switch>
+            <Route component={Login} exact path="/login" />
+            <Home />
+          </Switch>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

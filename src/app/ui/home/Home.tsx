@@ -1,32 +1,31 @@
-import React, { Suspense } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import routes from "app/routes";
+import React, { Suspense } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import routes from 'app/routes';
 
-function App() {
+function Home() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/product/1">First Product</Link>
-            </li>
-            <li>
-              <Link to="/product/2">Second Product</Link>
-            </li>
-          </ul>
-        </nav>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/product/1">First Product</Link>
+          </li>
+          <li>
+            <Link to="/product/2">Second Product</Link>
+          </li>
+        </ul>
+      </nav>
+      <Suspense fallback="Loading..">
+        <Switch>
+          {routes.map(({ component, exact, path }, index) => <Route key={`route--${path}`} component={component} exact={exact} path={path} />)}
+        </Switch>
+      </Suspense>
 
-        <Suspense fallback="Loading..">
-          {routes.map(({ component, exact, path }, index) => <Route key={index} component={component} exact={exact} path={path} />)}
-        </Suspense>
-
-      </div>
-    </Router>
+    </div>
   );
 }
 
-export default App;
+export default Home;

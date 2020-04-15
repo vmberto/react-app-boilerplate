@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { primaryColor, dangerColor } from 'app/utils/styled-components.utils';
 
-interface ButtonProps { 
+interface ButtonProps {
     isGhost?: boolean
     danger?: boolean
 }
@@ -12,31 +12,31 @@ const Button = styled.button<ButtonProps>`
     border: 2px solid ${primaryColor};
     border-radius: 3px;
     cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 const readFontColorProps = (props: ButtonProps) => {
     if (props.isGhost) {
         if (props.danger) {
             return dangerColor;
-        } else {
-            return primaryColor;
         }
-    } else {
-        return 'white'; 
+        return primaryColor;
     }
-}
+    return 'white';
+};
 
 const readBackgroundColorProps = (props: ButtonProps) => {
     if (props.isGhost) {
-        return 'transparent'; 
-    } else {
-        if (props.danger) {
-            return dangerColor;
-        } else {
-            return primaryColor;
-        }
+        return 'transparent';
     }
-}
+    if (props.danger) {
+        return dangerColor;
+    }
+    return primaryColor;
+};
 
 /**
  * Default Button
@@ -45,7 +45,7 @@ const readBackgroundColorProps = (props: ButtonProps) => {
 export const DefaultButton = styled(Button)`
     color: ${readFontColorProps};
     background-color: ${readBackgroundColorProps};
-    border: 2px solid ${props => props.danger ? dangerColor : primaryColor};    
+    border: 2px solid ${(props) => (props.danger ? dangerColor : primaryColor)};    
 `;
 
 /**
@@ -56,5 +56,5 @@ export const RoundedButton = styled(Button)`
     color: ${readFontColorProps};
     background-color: ${readBackgroundColorProps};
     border-radius: 50px;
-    border: 2px solid ${props => props.danger ? dangerColor : primaryColor};    
+    border: 2px solid ${(props) => (props.danger ? dangerColor : primaryColor)};    
 `;
