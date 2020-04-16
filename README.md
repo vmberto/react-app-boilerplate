@@ -1,8 +1,6 @@
 
 
-## :computer: Tecnologias
-
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+## :computer: Technologies
 
 - [React](https://reactjs.org/)
 - [React-Router](https://reacttraining.com/react-router/)
