@@ -1,6 +1,16 @@
-## Available Scripts
 
-In the project directory, you can run:
+
+## :computer: Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [React](https://reactjs.org/)
+- [React-Router](https://reacttraining.com/react-router/)
+- [Redux](https://redux.js.org/)
+- [Redux Saga](https://redux-saga.js.org/)
+- [styled-components](https://styled-components.com/)
+
+## Available Scripts
 
 ### `yarn start`
 
